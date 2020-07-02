@@ -1,2 +1,4 @@
-<app-date-picker [selectedDate]="selectedDate"> </app-date-picker>
+<app-date-picker
+  (selectedDateEvent)="selectedDateHandler($event)"
+></app-date-picker>
 <app-date-renderer [selectedDate]="selectedDate"></app-date-renderer>
