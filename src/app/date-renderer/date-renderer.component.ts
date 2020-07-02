@@ -1,10 +1,5 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Inject,
-  Input
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DateStore } from 'src/data-stores/date.service';
 
 @Component({
   selector: 'app-date-renderer',
@@ -12,8 +7,12 @@ import {
   styleUrls: ['./date-renderer.component.css']
 })
 export class DateRendererComponent implements OnInit {
-  @Input() selectedDate: string;
-  constructor() {}
+  selectedDate: string;
+  constructor(private readonly dateStore: DateStore) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dateStore.selectedDate.subscribe(selectedDate => {
+      this.selectedDate = selectedDate;
+    });
+  }
 }

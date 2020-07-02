@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DateStore } from '../../data-stores/date.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -6,15 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent implements OnInit {
-  @Output() selectedDateEvent = new EventEmitter<string>();
-
-  @Input() selectedDateHandler: ($event: string) => void;
-  @Input() selectedDate: string;
-  constructor() {}
+  constructor(private readonly dateStore: DateStore) {}
 
   ngOnInit(): void {}
 
-  update(): void {
-    this.selectedDateEvent.emit(this.selectedDate);
+  update(selectedDate: string): void {
+    this.dateStore.update(selectedDate);
   }
 }

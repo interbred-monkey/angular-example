@@ -1,4 +1,5 @@
-<select [value]="selectedDate" (change)="update()">
+<select [value]="" (change)="update($event.target.value)">
+  <option value=""></option>
   <option value="January 1st">January 1st</option>
   <option value="February 1st">February 1st</option>
   <option value="March 1st">March 1st</option>
